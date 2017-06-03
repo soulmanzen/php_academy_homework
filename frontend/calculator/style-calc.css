@@ -1,0 +1,117 @@
+.main {
+    width: 233px;
+    height: auto;
+    border: 1px solid;
+    position: relative;
+    margin: auto;
+    border-radius: 3%;
+    background-color: whitesmoke;
+}
+
+.top {
+    margin: 0px 10px;
+    position: relative;
+}
+
+.out-buttons {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin-right: 2px;
+    padding: 0;
+}
+
+.out-buttons ul li {
+    display: inline;
+    margin: 0px;
+}
+
+.out-buttons ul li button {
+    margin: -2px;
+}
+
+.second {
+     margin: 10px;
+     background-color: #a1d9e8;
+     border: 1px solid gray;
+}
+
+span {
+    font-size: 80%;
+}
+
+
+
+ul {
+    list-style: none; /*убираем маркеры списка*/
+    margin: 0; /*убираем верхнее и нижнее поле, равное 1em*/
+    padding-left: 0; /*убираем левый отступ, равный 40px*/
+}
+
+
+.menu {
+    height: 18px;
+}
+
+.menu ul li {
+    display: inline;
+    float: left;
+}
+
+.menu ul li button {
+    border: none;
+    background-color: inherit;
+    font-size: 70%;
+}
+
+.third {
+    padding: 5px;
+    background-color: #d4e3f2;
+    margin-top: 2px;
+    border-top: 1px solid gray;
+}
+
+.display {
+    border: 1px solid gray;
+    height: 40px;
+    width: 195px;
+    background-color: aliceblue;
+    margin: 3px 2px 0px;
+}
+
+.table {
+    margin-right: 10px;
+}
+
+table {
+}
+
+table button {
+    width: 36px;
+    height: 36px;
+}
+
+button.big-r {
+    /*top: 0;*/
+    /*margin: auto;*/
+    height: 76px;
+    width: 36px;
+    /*position: absolute;*/
+}
+button.big-d {
+    /*top: 0;*/
+    /*margin: auto;*/
+    height: 36px;
+    width: 76px;
+    /*position: absolute;*/
+}
+
+td {
+    height: 30px;
+    width: 30px;
+    background-color: #a0d3e8;
+}
+
+/*td.big {*/
+    /*position: relative;*/
+/*}*/
