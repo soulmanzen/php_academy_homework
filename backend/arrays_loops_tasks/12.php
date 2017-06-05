@@ -3,14 +3,11 @@
 $num = 0;
 $n = 1000;
 
-while (true) {
+while ($n>=50) {
     $n /= 2;
-    ++$num;
-    if ($n < 50) {
-        echo 'число ', $n;
-        break;
-    }
+    $num++;
 }
 
+echo 'число ', $n;
 echo '<br>';
 echo 'итераций ', $num;
