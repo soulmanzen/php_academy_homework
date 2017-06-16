@@ -1,11 +1,12 @@
 <?php
 /**
  * @param string $directory
- * @return string
  */
 function files_in_dir(string $directory)
 {
-    return implode(PHP_EOL, scandir($directory));
+    foreach (scandir($directory) as $item) {
+        echo is_file($item) ? $item . '<br>' : false;
+    }
 }
 
-echo nl2br(files_in_dir('C:\xampp\htdocs\php_academy_homework\backend\functions_forms_tasks\3'));
+files_in_dir('C:\xampp\htdocs\php_academy_homework\backend\functions_forms_tasks');
