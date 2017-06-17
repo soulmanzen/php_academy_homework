@@ -1,6 +1,15 @@
 <?php
 
 /**
+ * substr for array_walk
+ * @param $item
+ */
+function my_substr(&$item)
+{
+    $item = substr($item , 0,-4);
+}
+
+/**
  * @param string $path
  * @return string name of file without extension
  */
@@ -10,11 +19,6 @@ function getRandomFileName(string $path)
 
     $all_files = array_diff(scandir($path), ['.', '..']);
     natsort($all_files);
-
-    function my_substr(&$item)
-    {
-        $item = substr($item , 0,-4);
-    }
 
     array_walk($all_files, 'my_substr');
 
@@ -152,12 +156,10 @@ function drawTable()
 </head>
 <body>
 <div class="container">
-    <div class="header"><h1>Wellcome to Gallery</h1></div>
+    <div class="header"><h1>Welcome to Gallery</h1></div>
     <div class="upload">
         <form method="post" enctype="multipart/form-data">
-            <input type="file" name="gallery[]">
-            <input type="file" name="gallery[]">
-            <input type="file" name="gallery[]">
+            <input type="file" name="gallery[]" multiple>
             <input type="submit">
         </form>
         <div><?php echo galleryUploader()?></div>
