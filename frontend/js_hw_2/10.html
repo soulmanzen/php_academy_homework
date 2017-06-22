@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10</title>
+</head>
+<body>
+
+<script>
+    /**
+     * returns valid x or throw error;
+     */
+    function getValidX()
+    {
+        var x = prompt('Введите первое число');
+        var attempts = 3;
+        while (!x || isNaN(x)) {
+            x = prompt('Вы ввели некорректное значение. Введите первое ЧИСЛО еще раз.');
+            attempts--;
+            if (attempts <= 0) {
+                alert('Пока');
+                throw new Error ('Incorrect x');
+            }
+        }
+        return +x;
+    }
+
+    /**
+     * returns valid y or throw error;
+     */
+    function getValidY()
+    {
+        var y = prompt('Введите второе число');
+        var attempts = 3;
+        while (!y || isNaN(y)) {
+            y = prompt('Вы ввели некорректное значение. Введите второе ЧИСЛО еще раз.');
+            attempts--;
+            if (attempts <= 0) {
+                alert('Пока');
+                throw new Error ('Incorrect x');
+            }
+        }
+        return +y;
+    }
+
+    /**
+     * returns valid operator or throw error;
+     */
+    function getValidOperator()
+    {
+        var operator = prompt('Введите оператор: сумма "+", вычитание "-", деление "/", умножение "*"');
+        var attempts = 3;
+        while (!operator || (operator !== '/' &&  operator !== '*' &&  operator !== '+' &&  operator !== '-')) {
+            operator = prompt('Вы ввели некорректное значение. Введите оператор: сумма "+", вычитание "-", деление "/", умножение "*" еще раз.');
+            attempts--;
+            if (attempts <= 0) {
+                alert('Пока');
+                throw new Error ('Incorrect operator');
+            }
+        }
+        return operator;
+    }
+
+    /**
+     *
+     * @param x
+     * @param y
+     * @returns {*} sum of x and y
+     */
+    function getSum(x, y) {
+        return x + y;
+    }
+
+    /**
+     *
+     * @param x
+     * @param y
+     * @returns {number} subtraction of x and y
+     */
+    function getSubtraction(x, y) {
+        return x - y;
+    }
+
+    /**
+     *
+     * @param x
+     * @param y
+     * @returns {*} division of x and y or message if y===0
+     */
+    function getDivision(x, y) {
+        if(y === 0) {
+            return 'На ноль делить нельзя';
+        }
+        return x / y;
+    }
+
+    /**
+     *
+     * @param x
+     * @param y
+     * @returns {number} multiplication of x and y
+     */
+    function getMultiplication(x, y) {
+        return x * y;
+    }
+
+    /**
+     * returns alert with the result of calculation or throw error
+     */
+    function doCalculation() {
+        var x = getValidX();
+        var y = getValidY();
+        var operator = getValidOperator();
+
+        switch(operator) {
+            case '/':
+                var result = getDivision(x, y);
+                break;
+            case '*':
+                result = getMultiplication(x, y);
+                break;
+            case '-':
+                result = getSubtraction(x, y);
+                break;
+            case '+':
+                result = getSum(x, y);
+                break;
+            default:
+                break;
+        }
+        var message = x + operator + y + ' = ' +result;
+        return alert(message);
+    }
+
+    doCalculation();
+</script>
+
+</body>
+</html>

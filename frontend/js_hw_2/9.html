@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9</title>
+</head>
+<body>
+
+<script>
+    /**
+     *
+     * @param n
+     * @returns {*}
+     */
+    function calcFactorial(n)
+    {
+        if (n < 0) {
+            return 'Число не может быть отрицательным';
+        } else if (n === 0 || n === 1) {
+            return 1;
+        } else {
+            for (var i = 2, x = 1; i <= n; i++) {
+                x *= i;
+            }
+            return x;
+        }
+    }
+
+    alert(calcFactorial(4));
+
+    /**
+     * calculates x to the power of n
+     * @param x
+     * @param n
+     * @returns {*}
+     */
+    function pow (x, n)
+    {
+        if (n > 0) {
+            for (var res = 1; n >= 1; n--) {
+                res *= x;
+            }
+            return res;
+        }
+        if (n === 0) {
+            if (x === 0) {
+                return undefined;
+            } else {
+                return 1;
+            }
+        }
+        if (n === -1) {
+            return (1 / x);
+        }
+        if (n < 0) {
+            for (var res = 1; n <= -1; n++) {
+                res *= x;
+            }
+        }
+        return 1 / res;
+    }
+
+    alert(pow(2, -3));
+</script>
+
+</body>
+</html>

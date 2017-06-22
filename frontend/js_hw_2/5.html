@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5</title>
+</head>
+<body>
+
+<script>
+    /**
+     * calculates x to the power of n
+     * @param x
+     * @param n
+     * @returns {*}
+     */
+    function pow (x, n)
+    {
+        if (n === 1) {
+            return x;
+        }
+        if (n > 0) {
+            return x * pow(x, n - 1);
+        }
+        if (n === 0) {
+            if (x === 0) {
+                return undefined;
+            } else {
+                return 1;
+            }
+        }
+        if (n === -1) {
+            return (1 / x);
+        }
+        if (n < 0) {
+            return (1 / x) * pow(x, n + 1);
+        }
+    }
+
+    alert(pow(2, -5));
+
+</script>
+
+</body>
+</html>
