@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7</title>
+</head>
+<body>
+
+<script>
+    var student1 = {
+        name: 'Ivan',
+        surname: 'Ivanov',
+        scores: [5, 4, 5, 5, 2],
+        hasScholarship: function () {
+            var result = this.scores.reduce(function (sum, current) {
+                return sum + current;
+            }) / this.scores.length;
+
+            return (result > 4);
+        }
+    };
+
+    var student2 = {
+        name: 'Petr',
+        surname: 'Petrov',
+        scores: [2, 5, 3, 3, 5],
+        hasScholarship: function () {
+            var result = this.scores.reduce(function (sum, current) {
+                    return sum + current;
+                }) / this.scores.length;
+
+            return (result > 4);
+        }
+    };
+
+    var student3 = {
+        name: 'Sidr',
+        surname: 'Sidorov',
+        scores: [5, 2, 1, 3, 3],
+        hasScholarship: function () {
+            var result = this.scores.reduce(function (sum, current) {
+                    return sum + current;
+                }) / this.scores.length;
+
+            return (result > 4);
+        }
+    };
+
+    var students = [student1, student2, student3];
+
+    students.forEach(function (student) {
+        console.log(student.name + ' ' + student.surname + ' ' +
+            (student.hasScholarship() ? 'на стипендии' : 'без стипендии') );
+    });
+</script>
+
+</body>
+</html>

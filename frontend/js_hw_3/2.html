@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+</head>
+<body>
+
+<script>
+    function fillNamesList() {
+        var names = [];
+        while (x = prompt('Если хотите, добавьте имя в массив или нажмите отмена')) {
+            names.push(x);
+        }
+        return names;
+    }
+
+    var names = fillNamesList();
+
+    function greet(names) {
+        var greetings = ['привет', 'здравствуйте', 'добрый день', 'хай', 'приятно познакомиться'];
+
+        return alert(greetings[Math.floor(Math.random() * greetings.length)] + ', '
+            + names[Math.floor(Math.random() * names.length)]);
+    }
+
+    greet(names);
+
+    alert(names.sort());
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6</title>
+</head>
+<body>
+
+<script>
+    var salaries = {'sasha': 3000, 'masha': 4500, 'dasha': 2400};
+
+    function showMaxSallary(salaries) {
+        var max = 0;
+        for (var key in salaries) {
+            if (salaries[key] > max) {
+                max = salaries[key];
+                var name = key;
+            }
+        }
+        return name;
+    }
+
+    console.log(showMaxSallary(salaries));
+</script>
+
+
+</body>
+</html>
