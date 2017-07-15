@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6</title>
+</head>
+<body>
+
+<script>
+    // Результат alert
+    var object = {
+        toString: function () {
+            return "myObject";
+        },
+        valueOf: function () {
+            return 13;
+        }
+    };
+
+    alert(object); // myObject
+    alert(object + 13); //26
+    alert("hello " + object); // hello 13
+</script>
+
+
+</body>
+</html>

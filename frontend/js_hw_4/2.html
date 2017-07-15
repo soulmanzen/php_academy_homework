@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+</head>
+<body>
+
+<script>
+    // Чему равен this?
+    //
+    function func() {
+        'use strict';
+
+        var student, greet;
+
+        student = {
+            greet: function () {
+                alert(this);
+            }
+        };
+
+        student.greet(); // this == object
+        (student.greet)(); // this == object
+        (greet = student.greet)(); // this == undefined
+        (student.greet || student.bye)(); // this == undefined
+    }
+
+    func();
+</script>
+
+</body>
+</html>
