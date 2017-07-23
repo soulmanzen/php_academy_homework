@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    // ----- Задача 1. Что выведет alert? ----- //
+    alert(getFullname('Ivan')); // Ivan undefined. Потому что функция уже существует, а переменная surname = undefined
+
+    var surname = "Ivanov";
+
+    function getFullname(name) {
+        return name + " " + surname;
+    }
+
+    // ----- Задача 2. Что выведет alert? ----- //
+    var name = "Petr";
+
+    function getName() {
+        if (1) {
+            name = "Ivan";
+        } else {
+            var name = "Stepan";
+        }
+
+        alert( name ); // Ivan, это локальная переменная из-за var name "Stepan"
+    }
+
+    getName();
+    alert(name); // Petr, это глобальная переменная var name = "Petr", которая не была изменена.
+
+    // ----- Задача 3. Что выведет alert? ----- //
+    var name2 = "Petr";
+
+    function getName() {
+        if (1) {
+            name2 = "Ivan";
+        } else {
+            name2 = "Stepan";
+        }
+
+        alert( name2 ); // Ivan, глобальная была изменена
+    }
+
+    getName();
+    alert(name2); // Ivan, глобальная была изменена
+
+    // ----- Задача 4. Что выведет alert? ----- //
+    function func0() {
+        alert(window); // Object Window
+    }
+    func0();
+
+    function func1() {
+        alert(window); // undefined потому что инициализирована, но не присвоено значение.
+
+        var window = {name: 'Petr', toString: function() {return this.name;}};
+
+        alert(window); // Petr
+    }
+    func1();
+
+    // ----- Задача 5. Можно ли достучаться к переменной родительской ф-и? ----- //\
+    function func() {
+        var name = "Ivan";
+
+        return function() {
+            var name = "Petr"; // как достать Ivan?
+            console.log(name); // Нельзя достать.
+        }
+    }
+
+    // ----- Задача 6. Глобальная переменная ----- //
+    // Это пример из урока №2. С помощью counterMaker мы можем создавать независимые счетчики
+    // Что если переменная counter будет глобальной?
+
+    /*function counterMaker() {
+      var counter = 0;
+      return function() {
+        return ++counter;
+      };
+    }
+
+    var c1 = counterMaker();
+    var c2 = counterMaker();
+    c1(); c1(); c1(); c1();
+    c2(); c2();*/
+    var counter = 0;
+
+    function counterMaker() {
+        return function() {
+            return ++counter;
+        };
+    }
+
+    // какой результат этих вызовов?
+    var c1 = counterMaker();
+    var c2 = counterMaker();
+    c1(); c1(); c1(); c1(); // 1, 2, 3, 4
+    c2(); c2(); // 5, 6 - потому что они все изменяют одну и ту же переменную
+
+    // ----- Задача 7. Что выведет консоль? ----- //
+    function A(x) {
+        function B(y) {
+            function C(z) {
+                console.log(x + y + z);
+            }
+            C(3);
+        }
+        B(2);
+    }
+    A(1); // 1 + 2 + 3 = 6
+    // ----- Задача 8. Что будет в result? ----- //
+    function outside() {
+        var x = 10;
+        function inside(x) {
+            return x;
+        }
+        return inside;
+    }
+    result = outside()(20); // 20 - локальная переменная функции inside
+    // ----- Задача 9. Переписать counterMaker в конструктор и создавать новый счетчики с помощью new ----- //
+    /*
+        Должно работать таким образом.
+        var c1 = new Counter();
+        c1.next(); -> 1;
+        c1.next(); -> 2;
+        c1.next(); -> 3;
+
+        var c2 = new Counter();
+        c2.next(); -> 1;
+        c2.next(); -> 2;
+
+        c1.reset();
+        c1.next(); -> 1;
+
+        c1.setCounterValue(10);
+        c1.next(); -> 11
+
+        с1.reset();
+        c1.setStep(5);
+        c1.next(); -> 5;
+        c1.next(); -> 10;
+
+        У новосозданных объектов c1, c2, ... , cn должно быть 4 метода
+        next - метод, который увеличивает текущее значение counter на значение step ( step по умолчанию равен 1 )
+        reset - метод, который устанавливает текущее значение counter в 0
+        setCounterValue - метод, который устанавливает текущее значение counter в значение, переданное в качестве аргумента
+        setStep - метод, который устанавливает значение step (шаг) в значение, переданное в качестве аргумента ( по умолчанию step = 1 )
+        back - уменьшает counter на step
+
+        при этом у пользователя не должно быть прямого доступа к перемнным counter и step, которые объявляются внутри ф-и конструктор Counter. тоесть не должно быть такого
+        c1.counter = 10;
+        c1.step = 5;
+    */
+    function Counter() {
+        var step = 1;
+        var value = 0;
+
+
+        return {
+
+            next: function () {
+                return value = value + step;
+            },
+
+            reset: function () {
+                value = 0;
+            },
+
+            setCounterValue: function (newValue) {
+                value = newValue;
+            },
+
+            setStep: function (newStep) {
+                step = newStep;
+            },
+
+            back: function () {
+                return value = value - step;
+            }
+        }
+    }
+
+    c1 = new Counter();
+    console.log(c1.next());
+    c1.next();
+    alert(c1.next());
+
+    c2 = new Counter();
+    c2.setStep(2);
+    console.log(c2.next());
+    console.log(c2.next());
+    c2.reset();
+    console.log(c2.next());
+    c2.setCounterValue(25);
+    console.log(c2.next());
+    console.log(c2.back());
+
+
+</script>
+</body>
+</html>
