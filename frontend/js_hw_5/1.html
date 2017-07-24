@@ -158,28 +158,24 @@
         var step = 1;
         var value = 0;
 
+        this.next = function () {
+            return value = value + step;
+        },
 
-        return {
+        this.reset = function () {
+            value = 0;
+        },
 
-            next: function () {
-                return value = value + step;
-            },
+        this.setCounterValue = function (newValue) {
+            value = newValue;
+        },
 
-            reset: function () {
-                value = 0;
-            },
+        this.setStep = function (newStep) {
+            step = newStep;
+        },
 
-            setCounterValue: function (newValue) {
-                value = newValue;
-            },
-
-            setStep: function (newStep) {
-                step = newStep;
-            },
-
-            back: function () {
-                return value = value - step;
-            }
+        this.back = function () {
+            return value = value - step;
         }
     }
 
